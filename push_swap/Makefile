@@ -1,16 +1,17 @@
-SRC = push_swap.c fonctions_utils.c stack_error.c lst_utils.c
+SRC = 	push_swap.c fonctions_utils.c stack_error.c lst_utils.c \
+		algorithm.c instructions.c little_len.c
 
-SRCS = ${addprefix srcs/, ${SRC}}
+SRCS = 	${addprefix srcs/, ${SRC}}
 
-OBJ = ${addprefix binaries/, ${SRC}}
+OBJ = 	${addprefix binaries/, ${SRC}}
 
-OBJS = ${OBJ:%.c=%.o}
+OBJS = 	${OBJ:%.c=%.o}
 
-NAME = push_swap
+NAME = 	push_swap
 
-CC 	= cc
+CC 	= 	cc
 
-RM 	= rm -f
+RM 	= 	rm -f
 
 CFLAGS = -Wall -Wextra -Werror -g
 

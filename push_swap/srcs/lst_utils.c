@@ -6,20 +6,20 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 01:51:44 by svan-de-          #+#    #+#             */
-/*   Updated: 2022/12/27 13:10:00 by svan-de-         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:58:18 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_stack_new(int new)
+t_stack	*ft_stack_new(int new_int)
 {
 	t_stack	*lst;
 
 	lst = malloc(sizeof(t_stack));
 	if (!lst)
 		return (NULL);
-	lst->number = new;
+	lst->number = new_int;
 	lst->last = NULL;
 	lst->next = NULL;
 	return (lst);
@@ -32,7 +32,7 @@ void	ft_stack_add(t_stack *begin, int new_number)
 
 	new_stack = malloc(sizeof(t_stack));
 	if (!new_stack)
-		return (free(begin), NULL);
+		return ((void)free(begin));
 	last = begin;
 	while (last->next && last->next != begin)
 		last = last->next;
@@ -45,7 +45,7 @@ void	ft_stack_add(t_stack *begin, int new_number)
 int	ft_stack_len(t_stack *begin)
 {
 	int		i;
-	t_list	*lst;
+	t_stack	*lst;
 
 	if (!begin || (begin && !begin->next && !begin->last))
 		return (0);
@@ -87,8 +87,8 @@ void	ft_stack_delete(t_stack *begin)
 	t_stack	*tmp;
 
 	tmp = begin;
-	begin->next->last = begin->last;
-	begin->last->next = begin->next;
 	begin = begin->next;
+	begin->last = tmp->last;
+	tmp->last->next = begin;
 	free(tmp);
 }

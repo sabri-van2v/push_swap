@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 02:40:27 by svan-de-          #+#    #+#             */
-/*   Updated: 2022/12/27 11:39:32 by svan-de-         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:29:03 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,16 @@ char	*sorting_algorithm(t_stack *begin)
 	stack_b.array = malloc(sizeof(int) * ft_stack_len(begin));
 	str.str_malloc = malloc(sizeof(char) * 22000);
 	if (!str.str_malloc || !stack_b.array)
-		return (free(begin), free(stack_b.array), free(stack_b.array), NULL);
+		return (free(stack_b.array), free(stack_b.array), NULL);
 	str.index = 0;
 	stack_b.index = 0;
 	len = ft_stack_len(begin);
-	if (len > 1 && len < 6)
-		return (little_len(begin, &str));
+	if (len > 1 && len < 4)
+		return (little_len(begin, &str, len), str.str_malloc);
 	instructions(begin, &str, &stack_b);
 	while (stack_b.index > 0)
 		pa(begin, &stack_b, &str);
+	str.str_malloc[str.index] = '\0';
 	return (str.str_malloc);
 }
 
@@ -50,24 +51,28 @@ t_stack	*create_stack(int len, char **numbers)
 int	main(int argc, char *argv[])
 {
 	t_stack	*begin;
+	char	*str;
+	char	**split;
+	int		len_split;
 
-	if (!stack_error(argc, argv))
-		return (0);
-	begin = create_stack(argc - 1, (argv + 1));
+	len_split = 0;
+	if (argc == 2)
+	{
+		split = ft_split(argv[1], ' ');
+		len_split = ft_strlen_arr_str(split);
+		if (!stack_error(len_split, split, 1))
+			return (0);
+		begin = create_stack(len_split + 1, split);
+	}
+	else
+	{
+		if (!stack_error(argc, argv, 0))
+			return (0);
+		begin = create_stack(argc - 1, (argv + 1));
+	}
 	if (!begin)
 		return (0);
 	str = sorting_algorithm(begin);
-	str = "yes\n";
 	ft_putstr_one_call(str);
-
-	t_stack	*lst;
-	lst = begin;
-	ft_printf("%d\n", lst->number);
-	lst = lst->next;
-	while (lst != begin)
-	{
-		ft_printf("%d\n", lst->number);
-		lst = lst->next;
-	}
 	free(begin);
 }
