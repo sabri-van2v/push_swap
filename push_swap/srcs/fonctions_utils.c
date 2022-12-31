@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 05:05:03 by svan-de-          #+#    #+#             */
-/*   Updated: 2022/12/31 00:02:26 by svan-de-         ###   ########.fr       */
+/*   Updated: 2022/12/31 17:29:07 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	*ft_check_double_instruction(char *last_str)
 	j = 0;
 	ft_printf("%s\n", last_str);
 	new_str = malloc(sizeof(char) * ft_strlen(last_str));
+	if (!new_str)
+		return (last_str);
 	while (last_str[i])
 	{
 		if (i == 0 || last_str[i] == 'r' || last_str[i] == 's')
