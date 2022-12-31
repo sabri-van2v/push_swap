@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 05:05:03 by svan-de-          #+#    #+#             */
-/*   Updated: 2022/12/29 17:16:49 by svan-de-         ###   ########.fr       */
+/*   Updated: 2022/12/31 00:02:26 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char	*ft_check_double_instruction(char *last_str)
 
 	i = 0;
 	j = 0;
+	ft_printf("%s\n", last_str);
 	new_str = malloc(sizeof(char) * ft_strlen(last_str));
 	while (last_str[i])
 	{
@@ -81,7 +82,7 @@ void	ft_putstr_one_call(char *str)
 {
 	int	len;
 
-	str = ft_check_double_instruction(str);
+	// str = ft_check_double_instruction(str);
 	len = ft_strlen(str);
 	write(1, str, len);
 }

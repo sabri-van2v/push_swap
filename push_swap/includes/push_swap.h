@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 08:40:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2022/12/29 20:27:44 by svan-de-         ###   ########.fr       */
+/*   Updated: 2022/12/30 19:36:10 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,37 @@ typedef struct s_stack_b
 	int		*array;
 }	t_sb;
 
-void	ra(t_stack *begin, t_string *str);
+void	ra(t_stack **begin, t_string *str);
 
-void	rra(t_stack *begin, t_string *str);
+void	rra(t_stack **begin, t_string *str);
 
-void	pa(t_stack *begin, t_sb *stack_b, t_string *str);
+void	pa(t_stack **begin, t_sb *stack_b, t_string *str);
 
-void	pb(t_stack *begin, t_sb *stack_b, t_string *str);
+void	pb(t_stack **begin, t_sb *stack_b, t_string *str);
 
-void	instructions_ra(t_stack *begin, t_string *str);
+void	instructions_ra(t_stack **begin, t_string *str);
 
-void	instructions_rra(t_stack *begin, t_string *str);
+void	instructions_rra(t_stack **begin, t_string *str);
 
-void	instructions(t_stack *begin, t_string *str, t_sb *stack_b);
+void	instructions(t_stack **begin, t_string *str, t_sb *stack_b);
 
 t_lower	ft_stack_search_bigger(t_stack *begin);
 
-void	len_3(t_stack *begin, t_string *str);
+void	len_3(t_stack **begin, t_string *str);
 
-void	len_2(t_stack *begin, t_string *str);
+void	len_2(t_stack **begin, t_string *str);
 
-void	little_len(t_stack *begin, t_string *str, int len);
+void	little_len(t_stack **begin, t_string *str, int len);
 
-t_stack	*ft_stack_new(int new_int);
+t_stack	*ft_stack_new(int first_int, int second_int);
 
-void	ft_stack_add(t_stack *begin, int new_number);
+void	ft_stack_add(t_stack **begin, int new_number);
 
 int		ft_stack_len(t_stack *begin);
 
-t_lower	ft_stack_search_lower(t_stack *begin);
+t_lower	ft_stack_search_lower(t_stack **begin);
 
-void	ft_stack_delete(t_stack *begin);
+void	ft_stack_delete(t_stack **begin);
 
 int		ft_strlen_arr_str(char **arr_str);
 
