@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 08:40:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2022/12/30 19:36:10 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/02 01:44:04 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,18 @@ typedef struct s_stack
 	struct s_stack	*last;
 }	t_stack;
 
-typedef struct s_lower
+typedef struct s_value
 {
 	int	index;
 	int	value;
-}	t_lower;
+}	t_value;
+
+typedef struct s_couple
+{
+	t_value	a;
+	t_value	b;
+	int		same_way;
+}	t_couple;
 
 typedef struct s_string
 {
@@ -35,43 +42,37 @@ typedef struct s_string
 	char	*str_malloc;
 }	t_string;
 
-typedef struct s_stack_b
-{
-	int		index;
-	int		*array;
-}	t_sb;
+void	ra(t_stack **begin_a, t_string *str);
 
-void	ra(t_stack **begin, t_string *str);
+void	rra(t_stack **begin_a, t_string *str);
 
-void	rra(t_stack **begin, t_string *str);
+void	pa(t_stack **begin_a, t_stack **begin_b, t_string *str);
 
-void	pa(t_stack **begin, t_sb *stack_b, t_string *str);
+void	pb(t_stack **begin_a, t_stack **begin_b, t_string *str);
 
-void	pb(t_stack **begin, t_sb *stack_b, t_string *str);
+void	instructions_ra(t_stack **begin_a, t_string *str);
 
-void	instructions_ra(t_stack **begin, t_string *str);
+void	instructions_rra(t_stack **begin_a, t_string *str);
 
-void	instructions_rra(t_stack **begin, t_string *str);
+void	instructions(t_stack **begin_a, t_stack **begin_b, t_string *str);
 
-void	instructions(t_stack **begin, t_string *str, t_sb *stack_b);
+t_lower	ft_stack_search_bigger(t_stack *begin_a);
 
-t_lower	ft_stack_search_bigger(t_stack *begin);
+void	len_3(t_stack **begin_a, t_string *str);
 
-void	len_3(t_stack **begin, t_string *str);
+void	len_2(t_stack **begin_a, t_string *str);
 
-void	len_2(t_stack **begin, t_string *str);
-
-void	little_len(t_stack **begin, t_string *str, int len);
+void	little_len(t_stack **begin_a, t_string *str, int len);
 
 t_stack	*ft_stack_new(int first_int, int second_int);
 
-void	ft_stack_add(t_stack **begin, int new_number);
+void	ft_stack_add(t_stack **begin_a, int new_number);
 
-int		ft_stack_len(t_stack *begin);
+int		ft_stack_len(t_stack *begin_a);
 
-t_lower	ft_stack_search_lower(t_stack **begin);
+t_lower	ft_stack_search_lower(t_stack **begin_a);
 
-void	ft_stack_delete(t_stack **begin);
+void	ft_stack_delete(t_stack **begin_a);
 
 int		ft_strlen_arr_str(char **arr_str);
 
@@ -91,9 +92,9 @@ int		check_max_min(char *str);
 
 int		stack_error(int argc, char **argv, int f);
 
-char	*sorting_algorithm(t_stack *begin);
+char	*sorting_algorithm(t_stack *begin_a);
 
-t_stack	*create_stack(int len, char **numbers);
+t_stack	*create_stack(int len, int *number);
 
 int		main(int argc, char *argv[]);
 

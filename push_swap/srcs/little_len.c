@@ -6,23 +6,23 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:00:53 by svan-de-          #+#    #+#             */
-/*   Updated: 2022/12/30 19:21:17 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/01 19:43:10 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_lower	ft_stack_search_bigger(t_stack *begin)
+t_lower	ft_stack_search_bigger(t_stack *begin_a)
 {
 	t_stack	*lst;
 	int		i;
 	t_lower	bigger;
 
 	i = 2;
-	bigger.value = begin->number;
+	bigger.value = begin_a->number;
 	bigger.index = 1;
-	lst = begin->next;
-	while (lst != begin)
+	lst = begin_a->next;
+	while (lst != begin_a)
 	{
 		if (lst->number > bigger.value)
 		{
@@ -35,33 +35,33 @@ t_lower	ft_stack_search_bigger(t_stack *begin)
 	return (bigger);
 }
 
-void	len_3(t_stack **begin, t_string *str)
+void	len_3(t_stack **begin_a, t_string *str)
 {
 	t_stack	*tmp;
 	t_lower	bigger;
 
-	tmp = *begin;
-	bigger = ft_stack_search_bigger(*begin);
+	tmp = *begin_a;
+	bigger = ft_stack_search_bigger(*begin_a);
 	if (bigger.index == 1)
-		ra(begin, str);
+		ra(begin_a, str);
 	else if (bigger.index == 2)
-		rra(begin, str);
-	len_2(begin, str);
+		rra(begin_a, str);
+	len_2(begin_a, str);
 }
 
-void	len_2(t_stack **begin, t_string *str)
+void	len_2(t_stack **begin_a, t_string *str)
 {
-	if ((*begin)->number > (*begin)->next->number)
+	if ((*begin_a)->number > (*begin_a)->next->number)
 	{
 		ft_strlcpy(&str->str_malloc[str->index], "sa\n", 4);
 		str->index += 3;
 	}
 }
 
-void	little_len(t_stack **begin, t_string *str, int len)
+void	little_len(t_stack **begin_a, t_string *str, int len)
 {
 	if (len == 2)
-		return (len_2(begin, str));
+		return (len_2(begin_a, str));
 	if (len == 3)
-		return (len_3(begin, str));
+		return (len_3(begin_a, str));
 }

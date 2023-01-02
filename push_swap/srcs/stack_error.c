@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 04:39:30 by svan-de-          #+#    #+#             */
-/*   Updated: 2022/12/29 20:28:57 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/02 00:28:30 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ int	check_max_min(char *str)
 	return (1);
 }
 
-int	stack_error(int argc, char **argv, int flag)
+int	stack_error(int argc, char **argv)
 {
 	int	i;
 
 	i = 1;
-	if (argc <= 1 && flag == 0)
+	if (argc <= 1)
 		return (0);
 	while (argv[i])
 	{

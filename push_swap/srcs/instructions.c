@@ -6,58 +6,82 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 07:06:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2022/12/30 19:36:47 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/02 02:04:17 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_stack **begin, t_string *str)
+void	rab(t_stack **begin, t_string *str, char flag)
 {
 	*begin = (*begin)->next;
-	str->str_malloc[str->index] = 'r';
-	str->index++;
-	str->str_malloc[str->index] = 'a';
-	str->index++;
-	str->str_malloc[str->index] = '\n';
-	str->index++;
+	str->str_malloc[str->index++] = 'r';
+	if (flag == 'a')
+		str->str_malloc[str->index++] = 'a';
+	else if (flag == 'b')
+		str->str_malloc[str->index++] = 'b';
+	str->str_malloc[str->index++] = '\n';
 }
 
-void	rra(t_stack **begin, t_string *str)
+void	rrab(t_stack **begin, t_string *str, char flag)
 {
 	*begin = (*begin)->last;
-	str->str_malloc[str->index] = 'r';
-	str->index++;
-	str->str_malloc[str->index] = 'r';
-	str->index++;
-	str->str_malloc[str->index] = 'a';
-	str->index++;
-	str->str_malloc[str->index] = '\n';
-	str->index++;
+	str->str_malloc[str->index++] = 'r';
+	str->str_malloc[str->index++] = 'r';
+	if (flag == 'a')
+		str->str_malloc[str->index++] = 'a';
+	else if (flag == 'b')
+		str->str_malloc[str->index++] = 'b';
+	str->str_malloc[str->index++] = '\n';
 }
 
-void	pa(t_stack **begin, t_sb *stack_b, t_string *str)
+void	multiple_r(t_stack **begin_a, t_stack **begin_b, t_string *str, int f)
 {
-	ft_stack_add(begin, stack_b->array[stack_b->index]);
-	stack_b->index--;
-	ft_stack_delete(begin);
-	str->str_malloc[str->index] = 'p';
-	str->index++;
-	str->str_malloc[str->index] = 'a';
-	str->index++;
-	str->str_malloc[str->index] = '\n';
-	str->index++;
+	if (f == 1)
+	{
+		*begin_a = (*begin_a)->next;
+		*begin_b = (*begin_b)->next;
+		str->str_malloc[str->index++] = 'r';
+		str->str_malloc[str->index++] = 'r';
+		str->str_malloc[str->index++] = '\n';
+	}
+	if (f == 2)
+	{
+		*begin_a = (*begin_a)->last;
+		*begin_b = (*begin_b)->last;
+		str->str_malloc[str->index++] = 'r';
+		str->str_malloc[str->index++] = 'r';
+		str->str_malloc[str->index++] = 'r';
+		str->str_malloc[str->index++] = '\n';
+	}
 }
 
-void	pb(t_stack **begin, t_sb *stack_b, t_string *str)
+void	p(t_stack **receive, t_stack **send, t_string *str, char flag)
 {
-	stack_b->array[stack_b->index] = (*begin)->number;
-	stack_b->index++;
-	ft_stack_delete(begin);
-	str->str_malloc[str->index] = 'p';
-	str->index++;
-	str->str_malloc[str->index] = 'b';
-	str->index++;
-	str->str_malloc[str->index] = '\n';
-	str->index++;
+	ft_stack_add(receive, (*send)->number);
+	ft_stack_delete(send);
+	str->str_malloc[str->index++] = 'p';
+	if (flag == 'a')
+		str->str_malloc[str->index++] = 'a';
+	else if (flag == 'b')
+		str->str_malloc[str->index++] = 'b';
+	str->str_malloc[str->index++] = '\n';
+}
+
+void	s(t_stack **begin, t_string *str, char flag)
+{
+	t_stack	*tmp;
+
+	tmp = *begin;
+	(*begin) = (*begin)->next;
+	(*begin)->last = tmp->last;
+	tmp->last = *begin;
+	tmp->next = tmp->next->next;
+	(*begin)->next = tmp;
+	str->str_malloc[str->index++] = 's';
+	if (flag == 'a')
+		str->str_malloc[str->index++] = 'a';
+	else if (flag == 'b')
+		str->str_malloc[str->index++] = 'b';
+	str->str_malloc[str->index++] = '\n';
 }

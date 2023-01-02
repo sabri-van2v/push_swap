@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 01:51:44 by svan-de-          #+#    #+#             */
-/*   Updated: 2022/12/30 23:17:52 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/02 01:26:56 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ int	ft_stack_len(t_stack *begin)
 	return (i);
 }
 
-t_lower	ft_stack_search_lower(t_stack **begin)
+t_value	ft_stack_search_lower(t_stack **begin)
 {
 	t_stack	*lst;
 	int		i;
-	t_lower	lower;
+	t_value	lower;
 
 	i = 2;
 	lower.value = (*begin)->number;
@@ -97,9 +97,6 @@ void	ft_stack_delete(t_stack **begin)
 	{
 		free(*begin);
 		*begin = NULL;
-		ft_printf("JE SUIS LAA\n");
-		
-		ft_printf("JE SUI PLUS LAA\n");
 		return ;
 	}
 	*begin = (*begin)->next;
