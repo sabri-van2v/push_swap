@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:38:46 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/03 10:16:01 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/03 23:00:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_stack **begin_a, t_stack **begin_b)
 			return (len_tot -= len_b - cost_b);
 		len_tot -= len_a - cost_a;
 	}
+	ft_printf("len_tot : %d\n", len_tot);
 	return (len_tot);
 }
 
@@ -104,15 +105,17 @@ void	algorithm(t_stack **begin_a, t_stack **begin_b, t_string *str)
 	while (ft_stack_len(*begin_b) > 0)
 	{
 		couple = search_good_number(begin_a, begin_b);
+		// ft_printf("couple.a.index : %d\n", couple.a.index);
+		// ft_printf("couple.b.index : %d\n", couple.b.index);
 		while (couple.a.index > 1 && couple.b.index > 1 && couple.fl)
 			multiple_r(begin_a, begin_b, str, couple.fl);
 		while (couple.a.index > 1 || couple.b.index > 1)
 		{
-			if (couple.a.index < ft_stack_len(*begin_a) / 2)
+			if (couple.a.index < ft_stack_len(*begin_a) / 2 && couple.a.index > 1)
 				rab(begin_a, str, 'a');
 			if (couple.a.index > ft_stack_len(*begin_a) / 2)
 				rrab(begin_a, str, 'a');
-			if (couple.b.index < ft_stack_len(*begin_b) / 2)
+			if (couple.b.index < ft_stack_len(*begin_b) / 2 && couple.b.index > 1)
 				rab(begin_a, str, 'b');
 			if (couple.b.index > ft_stack_len(*begin_b) / 2)
 				rrab(begin_a, str, 'b');

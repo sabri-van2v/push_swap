@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 08:40:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/03 16:46:25 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/03 21:52:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int			good_median(t_stack *list, int len);
 
 int			median_calculation(t_stack *begin);
 
-void		creation_b(t_stack **begin_a, t_stack **begin_b, int b_create);
+void		creation_b(t_stack **begin_a, t_stack **begin_b, t_string *str, int b_create);
 
 void		push_presorting(t_stack **begin_a, t_stack **begin_b,
 				t_string *str);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   little_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:00:53 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/03 10:19:37 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/03 21:53:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	len_3(t_stack **begin_a, t_string *str)
 {
-	t_stack	*tmp;
 	t_value	bigger;
 
-	tmp = *begin_a;
 	bigger = ft_stack_search_bigger(*begin_a);
 	if (bigger.index == 1)
 		rab(begin_a, str, 'a');
