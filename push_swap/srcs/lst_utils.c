@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 01:51:44 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/02 01:26:56 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:50:17 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,27 +65,33 @@ int	ft_stack_len(t_stack *begin)
 	return (i);
 }
 
-t_value	ft_stack_search_lower(t_stack **begin)
+int	ft_stack_search_cost(t_stack *begin, t_stack *lst)
 {
-	t_stack	*lst;
-	int		i;
-	t_value	lower;
+	int		index_1;
+	int		index_2;
+	t_stack	*search;
 
-	i = 2;
-	lower.value = (*begin)->number;
-	lower.index = 1;
-	lst = (*begin)->next;
-	while (lst != *begin)
+	index_1 = 0;
+	index_2 = 0;
+	search = begin;
+	while (1)
 	{
-		if (lst->number < lower.value)
-		{
-			lower.value = lst->number;
-			lower.index = i;
-		}
-		lst = lst->next;
-		i++;
+		if (search == lst)
+			break ;
+		search = search->next;
+		index_1++;
 	}
-	return (lower);
+	search = begin;
+	while (1)
+	{
+		if (search == lst)
+			break ;
+		search = search->next;
+		index_2++;
+	}
+	if (index_1 < index_2)
+		return (index_1);
+	return (index_2);
 }
 
 void	ft_stack_delete(t_stack **begin)

@@ -1,5 +1,6 @@
-SRC = 	push_swap.c fonctions_utils.c stack_error.c lst_utils.c \
-		algorithm.c instructions.c little_len.c
+SRC = 	push_swap.c fonctions_utils.c stack_error.c \
+		lst_utils.c lst_value.c algorithm.c \
+		instructions.c little_len.c presorting.c \
 
 SRCS = 	${addprefix srcs/, ${SRC}}
 

@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 02:40:27 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/02 02:08:11 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/03 16:46:07 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 char	*sorting_algorithm(t_stack *begin_a)
 {
-	t_stack		begin_b;
+	t_stack		*begin_b;
 	t_string	str;
 	int			len;
 
 	str.index = 0;
-	str.str_malloc = malloc(sizeof(char) * 22000);
+	str.str_malloc = malloc(sizeof(char) * 30000);
 	if (!str.str_malloc)
-		return (str.str_malloc, NULL);
+		return (NULL);
 	len = ft_stack_len(begin_a);
 	if (len > 1 && len < 4)
 		return (little_len(&begin_a, &str, len), str.str_malloc);
-	presorting(&begin_a, &str, &begin_b);
-	algorithm(&begin_a, &str, &begin_b);
+	presorting(&begin_a, &begin_b, &str);
+	algorithm(&begin_a, &begin_b, &str);
 	full_rotate(&begin_a, &str);
 	str.str_malloc[str.index] = '\0';
 	return (str.str_malloc);
@@ -42,7 +42,7 @@ t_stack	*create_stack(int len, int *number)
 	if (!begin_a)
 		return (NULL);
 	while (i < len && begin_a)
-		ft_stack_add(&begin_a, ft_atoi(number[i]));
+		ft_stack_add(&begin_a, number[i++]);
 	return (begin_a);
 }
 
@@ -60,7 +60,10 @@ int	main(int argc, char *argv[])
 	if (!tab)
 		return (0);
 	while (argv[i])
-		tab[i - 1] = argv[i++];
+	{
+		tab[i - 1] = ft_atoi(argv[i]);
+		i++;
+	}
 	begin_a = create_stack(i - 1, tab);
 	if (!begin_a)
 		return (0);

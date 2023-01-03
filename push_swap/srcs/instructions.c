@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 07:06:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/02 02:04:17 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:50:06 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	multiple_r(t_stack **begin_a, t_stack **begin_b, t_string *str, int f)
 void	p(t_stack **receive, t_stack **send, t_string *str, char flag)
 {
 	ft_stack_add(receive, (*send)->number);
+	*receive = (*receive)->last;
 	ft_stack_delete(send);
 	str->str_malloc[str->index++] = 'p';
 	if (flag == 'a')
@@ -70,14 +71,11 @@ void	p(t_stack **receive, t_stack **send, t_string *str, char flag)
 
 void	s(t_stack **begin, t_string *str, char flag)
 {
-	t_stack	*tmp;
+	int	tmp;
 
-	tmp = *begin;
-	(*begin) = (*begin)->next;
-	(*begin)->last = tmp->last;
-	tmp->last = *begin;
-	tmp->next = tmp->next->next;
-	(*begin)->next = tmp;
+	tmp = (*begin)->number;
+	(*begin)->number = (*begin)->next->number;
+	(*begin)->next->number = tmp;
 	str->str_malloc[str->index++] = 's';
 	if (flag == 'a')
 		str->str_malloc[str->index++] = 'a';
