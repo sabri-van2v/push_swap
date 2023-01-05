@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 08:40:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/03 21:52:53 by marvin           ###   ########.fr       */
+/*   Updated: 2023/01/05 00:31:53 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ typedef struct s_value
 {
 	int	index;
 	int	value;
+	int	flag;
 }	t_value;
 
 typedef struct s_couple
 {
-	t_value	a;
-	t_value	b;
-	int		fl;
+	int		a_index;
+	int		b_index;
+	int		flag;
 }	t_couple;
 
 typedef struct s_string
@@ -55,8 +56,19 @@ void		s(t_stack **begin, t_string *str, char flag);
 
 void		full_rotate(t_stack **begin_a, t_string *str);
 
-int			advancing_length(t_stack *analyst[2], t_couple *take_the_best,
-				t_stack **begin_a, t_stack **begin_b);
+t_stack		*good_place(t_stack *analyst_b, t_stack **begin_a);
+
+void		good_setup_rab(t_couple couple, t_stack **begin_a,
+				t_stack **begin_b, t_string *str);
+
+void		good_setup_rrab(t_couple couple, t_stack **begin_a,
+				t_stack **begin_b, t_string *str);
+
+t_value		advancing_length(t_stack *analyst[2], t_stack **begin_a,
+				t_stack **begin_b);
+
+t_value		which_place(t_stack *analyst_b, t_stack **begin_a,
+				t_stack **begin_b);
 
 t_couple	search_good_number(t_stack **begin_a, t_stack **begin_b);
 
@@ -66,7 +78,8 @@ int			good_median(t_stack *list, int len);
 
 int			median_calculation(t_stack *begin);
 
-void		creation_b(t_stack **begin_a, t_stack **begin_b, t_string *str, int b_create);
+void		creation_b(t_stack **begin_a, t_stack **begin_b, t_string *str,
+				int b_create);
 
 void		push_presorting(t_stack **begin_a, t_stack **begin_b,
 				t_string *str);
@@ -112,5 +125,7 @@ char		*sorting_algorithm(t_stack *begin_a);
 t_stack		*create_stack(int len, int *number);
 
 int			main(int argc, char *argv[]);
+
+void		debug(t_stack **begin);
 
 #endif

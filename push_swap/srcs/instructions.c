@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 07:06:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/03 15:50:06 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/04 21:49:54 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	rab(t_stack **begin, t_string *str, char flag)
 		str->str_malloc[str->index++] = 'a';
 	else if (flag == 'b')
 		str->str_malloc[str->index++] = 'b';
+	//printf("je passe %i\n", str->index);
 	str->str_malloc[str->index++] = '\n';
 }
 

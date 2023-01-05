@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 01:51:44 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/03 15:50:17 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/04 19:53:04 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,10 @@ int	ft_stack_search_cost(t_stack *begin, t_stack *lst)
 	{
 		if (search == lst)
 			break ;
-		search = search->next;
+		search = search->last;
 		index_2++;
 	}
+	//ft_printf("index_1 : %d\nindex_2 : %d\n", index_1, index_2);
 	if (index_1 < index_2)
 		return (index_1);
 	return (index_2);
