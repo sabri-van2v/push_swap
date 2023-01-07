@@ -14,37 +14,37 @@
 
 int	stack_add_for_a(t_stack **begin_a, int value)
 {
-	t_stack *lst;
+	t_stack	*lst;
 	t_stack	*last;
 
-	last = *begin;
-    lst = malloc(sizeof(t_stack));
-    if (!lst)
-        return (-1);
+	last = *begin_a;
+	lst = malloc(sizeof(t_stack));
+	if (!lst)
+		return (-1);
 	while (last->next)
 		last = last->next;
-    lst->number = value;
+	lst->number = value;
 	lst->next = NULL;
 	last->next = lst;
 	lst->link = last->link + 1;
-    return (0);
+	return (0);
 }
 
-t_stack *create_stack_a(t_tab tab)
+t_stack	*create_stack_a(t_tab tab)
 {
-		t_stack *begin_a;
-		int		return_value;
-		int		i;
+	t_stack	*begin_a;
+	int		return_value;
+	int		i;
 
-		i = 1;
-		begin_a = ft_stack_new(tab.array[0]);
-		if (!begin_a)
-				return (NULL);
-		while (i < tab.len)
-		{
-			return_value = stack_add_for_a(&begin_a, number[i++]);
-			if (return_value < 0)
-				return (stack_delete(&begin_a), NULL);
-		}
-		return (begin_a);
+	i = 1;
+	begin_a = stack_new(tab.array[0]);
+	if (!begin_a)
+		return (NULL);
+	while (i < tab.len)
+	{
+		return_value = stack_add_for_a(&begin_a, tab.array[i++]);
+		if (return_value < 0)
+			return (stack_delete(&begin_a), NULL);
+	}
+	return (begin_a);
 }

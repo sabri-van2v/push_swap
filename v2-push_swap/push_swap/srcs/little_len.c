@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   little_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:00:53 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/06 01:25:09 by marvin           ###   ########.fr       */
+/*   Updated: 2023/01/07 17:11:02 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	bigger_index(t_stack **begin_a)
 		if (search->number > bigger_value)
 		{
 			bigger_index = search->link;
-			bigger_value = search->numer;
+			bigger_value = search->number;
 		}
 		search = search->next;
 	}
@@ -38,9 +38,9 @@ void	len_3(t_stack **begin_a)
 	int	bigger;
 
 	bigger = bigger_index(begin_a);
-	if (bigger.index == 1)
+	if (bigger == 1)
 		ra(begin_a);
-	else if (bigger.index == 2)
+	else if (bigger == 2)
 		rra(begin_a);
 	len_2(begin_a);
 }

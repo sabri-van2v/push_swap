@@ -12,26 +12,26 @@
 
 #include "push_swap.h"
 
-void    stack_incrementation(t_stack **begin)
+void	stack_incrementation(t_stack **begin)
 {
-    t_stack *browse;
+	t_stack	*browse;
 
-    browse = *begin;
-    while (browse)
-    {
-        browse->link++;
-        browse = browse->next;
-    }
+	browse = *begin;
+	while (browse)
+	{
+		browse->link++;
+		browse = browse->next;
+	}
 }
 
-void    stack_decrementation(t_stack **begin)
+void	stack_decrementation(t_stack **begin)
 {
-    t_stack *browse;
+	t_stack	*browse;
 
-    browse = *begin;
-    while (browse)
-    {
-        browse->link--;
-        browse = browse->next;
-    }
+	browse = *begin;
+	while (browse)
+	{
+		browse->link--;
+		browse = browse->next;
+	}
 }

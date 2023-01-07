@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fonctions_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 05:05:03 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/06 04:38:35 by marvin           ###   ########.fr       */
+/*   Updated: 2023/01/07 17:31:35 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void	order(t_stack **begin_a, t_tab tab)
 
 	len = stack_len(*begin_a);
 	lower = *begin_a;
-	while (lower->value != tab.array[0])
+	while (lower->number != tab.array[0])
 		lower = lower->next;
 	if (lower->link > len / 2)
 	{
-		while (lower->index != 1)
+		while (lower->link != 1)
 			rra(begin_a);
 	}
 	else
 	{
-		while (lower->index != 1)
+		while (lower->link != 1)
 			ra(begin_a);
 	}
 }

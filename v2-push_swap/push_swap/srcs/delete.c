@@ -12,20 +12,18 @@
 
 #include "push_swap.h"
 
-void    stack_delete(t_stack **begin);
+void	stack_delete(t_stack **begin)
 {
-    t_stack tmp;
-
-    while (begin)
-        delete_element(begin);
+	while (*begin)
+		delete_element(begin);
 }
 
-void    delete_element(t_stack **begin)
+void	delete_element(t_stack **begin)
 {
-    int tmp;
+	t_stack	*tmp;
 
-    tmp = *begin;
-    *begin = (*begin)->next;
-    free(tmp);
-    stack_decrementation(begin);
+	tmp = *begin;
+	*begin = (*begin)->next;
+	free(tmp);
+	stack_decrementation(begin);
 }

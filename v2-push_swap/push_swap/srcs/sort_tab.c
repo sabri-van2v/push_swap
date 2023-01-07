@@ -12,40 +12,46 @@
 
 #include "push_swap.h"
 
-
-int lower_number(int *arr, int max)
+void	tab_swap(int *a, int *b)
 {
-    int index;
-    int lower;
+	int	tmp;
 
-    index = 0;
-    lower = arr[0];
-    while (index < max)
-    {
-        if (arr[index] < lower)
-            lower = arr[index];
-        index++;
-    }
-    return (lower);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-void    sort_tab(t_tab *tab)
+int	lower_number(int *arr, int max)
 {
-    int     number;
-    int     i;
-    int     tmp;
-    int     index_tmp;
+	int	i;
+	int	lower;
 
-    i = 0;
-    while (i < tab->len)
-    {
-        index_tmp = 0;
-        number = lower_number(&tab.array[i], tab->len - i);
-        while (tab->array[index_tmp] != number)
-            index_tmp++;
-        tmp = tab->array[index->tmp];
-        tab->array[i] = number;
-        tab->array[index_tmp] = tmp;
-        i++;
-    }
+	i = 0;
+	lower = arr[0];
+	while (i < max)
+	{
+		if (arr[i] < lower)
+			lower = arr[i];
+		i++;
+	}
+	return (lower);
+}
+
+void	sort_tab(t_tab *tab)
+{
+	int	i;
+	int	index_lower;
+	int	lower;
+
+	i = 0;
+	index_lower = 0;
+	while (i < tab->len)
+	{
+		lower = lower_number(&tab->array[i], tab->len - i);
+		index_lower = 0;
+		while (tab->array[index_lower] != lower)
+			index_lower++;
+		tab_swap(&tab->array[i], &tab->array[index_lower]);
+		i++;
+	}
 }
