@@ -1,7 +1,7 @@
 SRC = 	main.c stack_error.c presorting.c little_len.c \
 		create_stack_a.c delete.c incrementation.c sort_tab.c \
-		lst_utils.c fonctions_utils.c sorting_algorithm.c push.c \
-		rotate.c swap.c reverse_rotate.c debug.c
+		lst_utils.c fonctions_utils.c sorting_algorithm.c path.c \
+		push.c rotate.c swap.c reverse_rotate.c debug.c
 
 SRCS = 	${addprefix srcs/, ${SRC}}
 

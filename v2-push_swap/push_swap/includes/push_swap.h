@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 08:40:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/07 18:13:37 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/07 21:39:07 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ typedef struct s_tab
 	int	*array;
 	int	len;
 }	t_tab;
+
+typedef struct s_short
+{
+	int		index_a;
+	char	sens_a;
+	int		index_b;
+	char	sens_b;
+	int		len_tot;
+}	t_short;
 
 void	sa(t_stack **begin_a);
 
@@ -70,6 +79,24 @@ void	order(t_stack **begin_a, t_tab tab);
 void	stack_delete(t_stack **begin);
 
 void	delete_element(t_stack **begin);
+
+int		next_number_index(t_stack *begin_a);
+
+int		len_same(int index_a, int index_b, int len_a, int len_b);
+
+int		len_opposite(int index_a, int index_b, int len_a, int len_b);
+
+t_short	calcul_path(t_stack *begin_a, t_stack *begin_b);
+
+t_short	short_path(t_stack *begin_a, t_stack *begin_b);
+
+void	opposite_sens(t_stack **begin_a, t_stack **begin_b, t_short path);
+
+void	ascending(t_stack **begin_a, t_stack **begin_b, t_short path);
+
+void	down(t_stack **begin_a, t_stack **begin_b, t_short path);
+
+int		sorting_algorithm(t_stack **begin_a, t_stack **begin_b);
 
 int		power(int nb, int power);
 
@@ -114,5 +141,7 @@ int		main(int argc, char *argv[]);
 void	print_stack(t_stack *begin);
 
 void	print_tab(t_tab tab);
+
+void	print_short(t_short	path);
 
 #endif
