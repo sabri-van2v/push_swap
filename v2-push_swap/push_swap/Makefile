@@ -3,13 +3,27 @@ SRC = 	main.c stack_error.c presorting.c little_len.c \
 		lst_utils.c fonctions_utils.c sorting_algorithm.c path.c \
 		push.c rotate.c swap.c reverse_rotate.c
 
+SRC_BONUS =	main_bonus.c stack_error_bonus.c \
+			create_stack_a_bonus.c delete_bonus.c \
+			lst_utils_bonus.c fonctions_utils_bonus.c \
+			push_bonus.c rotate_bonus.c \
+			swap_bonus.c reverse_rotate_bonus.c
+
 SRCS = 	${addprefix srcs/, ${SRC}}
+
+SRCS_BONUS = ${addprefix bonus/, ${SRC_BONUS}}
 
 OBJ = 	${addprefix binaries/, ${SRC}}
 
 OBJS = 	${OBJ:%.c=%.o}
 
+OBJ_BONUS =	${addprefix binaries/, ${SRC_BONUS}}
+
+OBJS_BONUS = ${OBJ_BONUS:%.c=%.o}
+
 NAME = 	push_swap
+
+NAME_BONUS = checker
 
 CC 	= 	cc
 
@@ -21,7 +35,14 @@ INCLUDES = Libft/includes/gnl Libft/includes/libc Libft/includes/ptf includes/
 
 HEADER = includes/push_swap.h
 
+HEADER_BONUS = includes/push_swap_bonus.h
+
 binaries/%.o: srcs/%.c ${HEADER}
+	make -C Libft
+	mkdir -p binaries/
+	${CC} ${CFLAGS} -c $< -o $@ ${addprefix -I, ${INCLUDES}}
+
+binaries/%.o: bonus/%.c ${HEADER_BONUS}
 	make -C Libft
 	mkdir -p binaries/
 	${CC} ${CFLAGS} -c $< -o $@ ${addprefix -I, ${INCLUDES}}
@@ -29,14 +50,21 @@ binaries/%.o: srcs/%.c ${HEADER}
 ${NAME}: ${OBJS}
 	${CC} -o ${NAME} ${OBJS} -LLibft -lft
 
+${NAME_BONUS}: ${OBJS_BONUS}
+	${CC} -o ${NAME_BONUS} ${OBJS_BONUS} -LLibft -lft
+
 all: ${NAME}
+
+bonus: ${NAME_BONUS}
 
 clean:
 	 ${RM} -r binaries
 	 make clean -C Libft
 
 fclean: clean
-	 ${RM} ${NAME}
+	 ${RM} ${NAME} ${NAME_BONUS}
 	 make fclean -C Libft
 
 re: fclean all
+
+.PHONY:	all bonus clean fclean re
