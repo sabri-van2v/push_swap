@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 08:40:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/08 03:10:33 by marvin           ###   ########.fr       */
+/*   Updated: 2023/01/08 20:52:49 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		len_same(int index_a, int index_b, int len_a, int len_b);
 
 int		len_opposite(int index_a, int index_b, int len_a, int len_b);
 
-t_short	calcul_path(t_stack *begin_a, t_stack *begin_b);
+t_short	calcul_path(t_stack *begin_a, t_stack *begin_b, int len_a, int len_b);
 
 t_short	short_path(t_stack *begin_a, t_stack *begin_b);
 

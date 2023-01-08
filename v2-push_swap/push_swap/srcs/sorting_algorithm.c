@@ -18,7 +18,7 @@ void	opposite_sens(t_stack **begin_a, t_stack **begin_b, t_short path)
 	{
 		while (path.index_a != 1 && path.index_a--)
 			ra(begin_a);
-		if (path.index_b != 1 && path.index_b <= stack_len(*begin_b)
+		while (path.index_b != 1 && path.index_b <= stack_len(*begin_b)
 			&& path.index_b++)
 			rrb(begin_b);
 	}
@@ -77,6 +77,8 @@ int	sorting_algorithm(t_stack **begin_a, t_stack **begin_b)
 		else
 			opposite_sens(begin_a, begin_b, path);
 		pa(begin_a, begin_b);
+		if (!*begin_a)
+			return (-1);
 	}
 	return (0);
 }

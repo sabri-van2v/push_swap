@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 19:57:41 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/08 03:52:32 by marvin           ###   ########.fr       */
+/*   Updated: 2023/01/08 21:15:21 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	next_number_index(t_stack *begin_a, t_stack *begin_b)
 	int	lower;
 	int	index;
 
-	lower = begin_a->number;
+	lower = INT32_MAX;
 	index = begin_a->link;
 	while (begin_a)
 	{
-		if (lower < begin_a->number && begin_a->number > begin_b->number)
+		if (begin_a->number < lower && begin_a->number > begin_b->number)
 		{
 			lower = begin_a->number;
 			index = begin_a->link;
@@ -39,16 +39,16 @@ int	len_same(int index_a, int index_b, int len_a, int len_b)
 	if (index_b <= len_b / 2 && index_a <= len_a / 2)
 	{
 		if (index_a > index_b)
-			len_tot = index_a;
+			len_tot = index_a - 1;
 		else
-			len_tot = index_b;
+			len_tot = index_b - 1;
 	}
 	else if (index_b > len_b / 2 && index_a > len_a / 2)
 	{
 		if (len_a - index_a > len_b - index_b)
-			len_tot = len_a - index_a;
+			len_tot = len_a - index_a + 1;
 		else
-			len_tot = len_b - index_b;
+			len_tot = len_b - index_b + 1;
 	}
 	return (len_tot);
 }
@@ -65,16 +65,12 @@ int	len_opposite(int index_a, int index_b, int len_a, int len_b)
 	return (len_tot);
 }
 
-t_short	calcul_path(t_stack *begin_a, t_stack *begin_b)
+t_short	calcul_path(t_stack *begin_a, t_stack *begin_b, int len_a, int len_b)
 {
 	t_short	path;
-	int		len_a;
-	int		len_b;
 
 	path.index_a = next_number_index(begin_a, begin_b);
 	path.index_b = begin_b->link;
-	len_a = stack_len(begin_a);
-	len_b = stack_len(begin_b);
 	if ((path.index_b <= len_b / 2 && path.index_a <= len_a / 2)
 		|| (path.index_b > len_b / 2 && path.index_a > len_a / 2))
 		path.len_tot = len_same(path.index_a, begin_b->link, len_a, len_b);
@@ -95,20 +91,18 @@ t_short	short_path(t_stack *begin_a, t_stack *begin_b)
 {
 	t_short	good;
 	t_short	check;
+	int		len_a;
+	int		len_b;
 
 	good.len_tot = INT32_MAX;
-	//print_stack(begin_a);
-	//print_stack(begin_b);
+	len_a = stack_len(begin_a);
+	len_b = stack_len(begin_b);
 	while (begin_b)
 	{
-		check = calcul_path(begin_a, begin_b);
-		
-		//exit(0);
+		check = calcul_path(begin_a, begin_b, len_a, len_b);
 		if (check.len_tot < good.len_tot)
 			good = check;
 		begin_b = begin_b->next;
 	}
-	print_short(good);
-	exit(0);
 	return (good);
 }

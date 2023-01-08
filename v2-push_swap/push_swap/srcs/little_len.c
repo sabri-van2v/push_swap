@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:00:53 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/07 17:11:02 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/08 21:34:38 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	len_2(t_stack **begin_a)
 
 void	little_len(t_stack **begin_a, int len)
 {
+	if (!*begin_a)
+		return ;
 	if (len == 2)
 		return (len_2(begin_a));
 	if (len == 3)
