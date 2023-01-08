@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   presorting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 19:58:42 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/07 18:01:33 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/08 03:42:13 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,12 @@ void	pb_optimisation(t_stack **begin_a, t_stack **begin_b)
 {
 	t_stack	*last;
 
+	pb(begin_a, begin_b);
 	last = *begin_b;
 	while (last->next)
 		last = last->next;
-	if ((*begin_a)->number < last->number)
-	{
+	if ((*begin_b)->number < last->number && stack_len(*begin_b) > 2)
 		rb(begin_b);
-		pb(begin_a, begin_b);
-		rrb(begin_b);
-		rrb(begin_b);
-	}
-	else
-		pb(begin_a, begin_b);
 	if ((*begin_b)->number < (*begin_b)->next->number)
 		sb(begin_b);
 }

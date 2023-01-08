@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 08:40:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/07 21:39:07 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/08 03:10:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	stack_delete(t_stack **begin);
 
 void	delete_element(t_stack **begin);
 
-int		next_number_index(t_stack *begin_a);
+int		next_number_index(t_stack *begin_a, t_stack *begin_b);
 
 int		len_same(int index_a, int index_b, int len_a, int len_b);
 

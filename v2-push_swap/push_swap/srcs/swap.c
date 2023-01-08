@@ -25,10 +25,8 @@ void	sa(t_stack **begin_a)
 void	sb(t_stack **begin_b)
 {
 	int	tmp;
-	int	tmp_index;
 
 	tmp = (*begin_b)->number;
-	tmp_index = (*begin_b)->link;
 	(*begin_b)->number = (*begin_b)->next->number;
 	(*begin_b)->next->number = tmp;
 	write(1, "sb\n", 3);
