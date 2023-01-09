@@ -28,14 +28,14 @@ void	rotate_action(t_stack **begin)
 
 void	ra(t_stack **begin_a)
 {
-	if (!*begin_a)
+	if (!*begin_a || !(*begin_a)->next)
 		return ;
 	rotate_action(begin_a);
 }
 
 void	rb(t_stack **begin_b)
 {
-	if (!*begin_b)
+	if (!*begin_b || !(*begin_b)->next)
 		return ;
 	rotate_action(begin_b);
 }
@@ -44,8 +44,8 @@ void	rr(t_stack **begin_a, t_stack **begin_b)
 {
 	if (!*begin_a || !*begin_b)
 		return ;
-	rotate_action(begin_a);
-	rotate_action(begin_b);
+	ra(begin_a);
+	rb(begin_b);
 }
 
 int	call_r(t_stack **begin_a, t_stack **begin_b, char *str)

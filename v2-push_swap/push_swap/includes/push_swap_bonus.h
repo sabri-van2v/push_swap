@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 21:55:42 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/09 02:05:42 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/09 03:52:08 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		stack_error(int argc, char *argv[]);
 
 int		checker_instructions(t_stack **begin_a, t_stack **begin_b, char *str);
 
-void	brain(t_stack *begin_a);
+void	brain(t_stack **begin_a);
 
 int		main(int argc, char *argv[]);
 

@@ -16,7 +16,7 @@ void	sa(t_stack **begin_a)
 {
 	int	tmp;
 
-	if (!*begin_a)
+	if (!*begin_a || !(*begin_a)->next)
 		return ;
 	tmp = (*begin_a)->number;
 	(*begin_a)->number = (*begin_a)->next->number;
@@ -27,7 +27,7 @@ void	sb(t_stack **begin_b)
 {
 	int	tmp;
 
-	if (!*begin_b)
+	if (!*begin_b || !(*begin_b)->next)
 		return ;
 	tmp = (*begin_b)->number;
 	(*begin_b)->number = (*begin_b)->next->number;

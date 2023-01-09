@@ -36,6 +36,7 @@ t_stack	*create_stack_a(t_tab tab)
 	int		i;
 
 	i = 1;
+	begin_a = NULL;
 	begin_a = stack_new(tab.array[0]);
 	if (!begin_a)
 		return (NULL);

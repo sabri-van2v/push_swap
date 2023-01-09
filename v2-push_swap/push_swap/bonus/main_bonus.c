@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 21:54:59 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/09 02:05:34 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/09 03:47:00 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	checker_instructions(t_stack **begin_a, t_stack **begin_b, char *str)
 	return (0);
 }
 
-void	brain(t_stack *begin_a)
+void	brain(t_stack **begin_a)
 {
 	char	*str;
 	t_stack	*begin_b;
@@ -51,13 +51,13 @@ void	brain(t_stack *begin_a)
 	{
 		free(str);
 		str = get_next_line(0);
-		return_value = checker_instructions(&begin_a, &begin_b, str);
+		return_value = checker_instructions(begin_a, &begin_b, str);
 		if (return_value < 0)
-			return (free(str));
+			return (stack_delete(&begin_b), free(str));
 		if (return_value > 0)
-			return (write(2, "Error\n", 6), free(str));
+			return (write(2, "Error\n", 6), stack_delete(&begin_b), free(str));
 	}
-	return_value = final_check(begin_a, begin_b);
+	return_value = final_check(*begin_a, begin_b);
 	if (return_value > 0)
 		ft_printf("KO\n");
 	else if (return_value == 0)
@@ -76,6 +76,7 @@ int	main(int argc, char *argv[])
 	begin_a = NULL;
 	i = 1;
 	tab.len = argc - 1;
+	tab.array = NULL;
 	tab.array = malloc(sizeof(int) * (argc - 1));
 	if (!tab.array)
 		return (0);
@@ -87,7 +88,7 @@ int	main(int argc, char *argv[])
 	begin_a = create_stack_a(tab);
 	if (!begin_a)
 		return (free(tab.array), 0);
-	brain(begin_a);
+	brain(&begin_a);
 	stack_delete(&begin_a);
 	free(tab.array);
 }

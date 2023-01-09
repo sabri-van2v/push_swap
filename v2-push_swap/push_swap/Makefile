@@ -25,6 +25,10 @@ NAME = 	push_swap
 
 NAME_BONUS = checker
 
+MAKELIB = make -C Libft
+
+MAKEBIN = mkdir -p binaries/
+
 CC 	= 	cc
 
 RM 	= 	rm -f
@@ -38,13 +42,13 @@ HEADER = includes/push_swap.h
 HEADER_BONUS = includes/push_swap_bonus.h
 
 binaries/%.o: srcs/%.c ${HEADER}
-	make -C Libft
-	mkdir -p binaries/
+	${MAKELIB}
+	${MAKEBIN}
 	${CC} ${CFLAGS} -c $< -o $@ ${addprefix -I, ${INCLUDES}}
 
 binaries/%.o: bonus/%.c ${HEADER_BONUS}
-	make -C Libft
-	mkdir -p binaries/
+	${MAKELIB}
+	${MAKEBIN}
 	${CC} ${CFLAGS} -c $< -o $@ ${addprefix -I, ${INCLUDES}}
 
 ${NAME}: ${OBJS}

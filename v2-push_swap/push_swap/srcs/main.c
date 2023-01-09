@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 02:40:27 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/09 02:04:09 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/09 02:28:20 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	brain(t_stack *begin_a, t_tab tab)
 
 	begin_b = NULL;
 	if (!check_no_instructions(begin_a))
-		return ;
+		return (stack_delete(&begin_a));
 	if (tab.len == 2 || tab.len == 3)
 		return (little_len(&begin_a, tab.len));
 	begin_b = presorting(&begin_a, tab);
