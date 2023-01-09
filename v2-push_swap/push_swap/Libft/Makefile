@@ -43,22 +43,28 @@ RM 	= rm -f
 
 CFLAGS = -Wall -Wextra -Werror
 
-binaries/libc/%.o: srcs/libc/%.c ${HEADERS_LIBC}
-	mkdir -p binaries/libc
+binaries/libc/%.o: srcs/libc/%.c ${HEADERS_LIBC} | binaries/libc
 	${CC} ${CFLAGS} -I./includes/libc/ -c $< -o $@
 
-binaries/gnl/%.o: srcs/gnl/%.c ${HEADERS_GNL}
-	mkdir -p binaries/gnl
+binaries/gnl/%.o: srcs/gnl/%.c ${HEADERS_GNL} | binaries/gnl
 	${CC} ${CFLAGS} -I./includes/gnl/ -c $< -o $@
 
-binaries/ptf/%.o: srcs/ptf/%.c ${HEADERS_PTF}
-	mkdir -p binaries/ptf
+binaries/ptf/%.o: srcs/ptf/%.c ${HEADERS_PTF} | binaries/ptf
 	${CC} ${CFLAGS} -I./includes/ptf/ -c $< -o $@
 
 ${NAME}: ${OBJS}
 	${LIB} ${NAME} ${OBJS}
 
 all: ${NAME}
+
+binaries/ptf :
+	@mkdir -p binaries/ptf
+
+binaries/gnl :
+	@mkdir -p binaries/gnl
+
+binaries/libc :
+	@mkdir -p binaries/libc
 
 clean:
 	${RM} -r binaries
