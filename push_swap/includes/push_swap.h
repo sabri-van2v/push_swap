@@ -6,12 +6,12 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 08:40:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/05 00:31:53 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/09 02:05:47 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_V1_H
-# define PUSH_SWAP_V1_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include "libft.h"
 # include "ft_printf.h"
@@ -20,112 +20,124 @@ typedef struct s_stack
 {
 	int				number;
 	struct s_stack	*next;
-	struct s_stack	*last;
+	int				link;
 }	t_stack;
 
-typedef struct s_value
+typedef struct s_tab
 {
-	int	index;
-	int	value;
-	int	flag;
-}	t_value;
+	int	*array;
+	int	len;
+}	t_tab;
 
-typedef struct s_couple
+typedef struct s_short
 {
-	int		a_index;
-	int		b_index;
-	int		flag;
-}	t_couple;
+	int		index_a;
+	char	sens_a;
+	int		index_b;
+	char	sens_b;
+	int		len_tot;
+}	t_short;
 
-typedef struct s_string
-{
-	int		index;
-	char	*str_malloc;
-}	t_string;
+void	sa(t_stack **begin_a);
 
-void		rab(t_stack **begin, t_string *str, char flag);
+void	sb(t_stack **begin_b);
 
-void		rrab(t_stack **begin, t_string *str, char flag);
+void	rotate_action(t_stack **begin);
 
-void		multiple_r(t_stack **begin_a, t_stack **begin_b,
-				t_string *str, int f);
+void	ra(t_stack **begin_a);
 
-void		p(t_stack **receive, t_stack **send, t_string *str, char flag);
+void	rb(t_stack **begin_b);
 
-void		s(t_stack **begin, t_string *str, char flag);
+void	rr(t_stack **begin_a, t_stack **begin_b);
 
-void		full_rotate(t_stack **begin_a, t_string *str);
+void	reverse_rotate_action(t_stack **begin);
 
-t_stack		*good_place(t_stack *analyst_b, t_stack **begin_a);
+void	rra(t_stack **begin_a);
 
-void		good_setup_rab(t_couple couple, t_stack **begin_a,
-				t_stack **begin_b, t_string *str);
+void	rrb(t_stack **begin_b);
 
-void		good_setup_rrab(t_couple couple, t_stack **begin_a,
-				t_stack **begin_b, t_string *str);
+void	rrr(t_stack **begin_a, t_stack **begin_b);
 
-t_value		advancing_length(t_stack *analyst[2], t_stack **begin_a,
-				t_stack **begin_b);
+void	pa(t_stack **begin_a, t_stack **begin_b);
 
-t_value		which_place(t_stack *analyst_b, t_stack **begin_a,
-				t_stack **begin_b);
+void	pb(t_stack **begin_a, t_stack **begin_b);
 
-t_couple	search_good_number(t_stack **begin_a, t_stack **begin_b);
+t_stack	*stack_new(int value);
 
-void		algorithm(t_stack **begin_a, t_stack **begin_b, t_string *str);
+int		stack_add(t_stack **begin, int value);
 
-int			good_median(t_stack *list, int len);
+int		stack_len(t_stack *begin);
 
-int			median_calculation(t_stack *begin);
+void	stack_incrementation(t_stack **begin);
 
-void		creation_b(t_stack **begin_a, t_stack **begin_b, t_string *str,
-				int b_create);
+void	stack_decrementation(t_stack **begin);
 
-void		push_presorting(t_stack **begin_a, t_stack **begin_b,
-				t_string *str);
+int		ft_strcmp_ps(char *s1, char *s2, int flag);
 
-void		presorting(t_stack **begin_a, t_stack **begin_b, t_string *str);
+int		check_no_instructions(t_stack *begin_a);
 
-void		len_3(t_stack **begin_a, t_string *str);
+void	order(t_stack **begin_a, t_tab tab);
 
-void		len_2(t_stack **begin_a, t_string *str);
+void	stack_delete(t_stack **begin);
 
-void		little_len(t_stack **begin_a, t_string *str, int len);
+void	delete_element(t_stack **begin);
 
-t_value		ft_stack_search_lower(t_stack *begin_a);
+int		next_number_index(t_stack *begin_a, t_stack *begin_b);
 
-t_value		ft_stack_search_bigger(t_stack *begin_a);
+int		len_same(int index_a, int index_b, int len_a, int len_b);
 
-t_stack		*ft_stack_new(int first_int, int second_int);
+int		len_opposite(int index_a, int index_b, int len_a, int len_b);
 
-void		ft_stack_add(t_stack **begin, int new_number);
+t_short	calcul_path(t_stack *begin_a, t_stack *begin_b, int len_a, int len_b);
 
-int			ft_stack_len(t_stack *begin);
+t_short	short_path(t_stack *begin_a, t_stack *begin_b);
 
-int			ft_stack_search_cost(t_stack *begin, t_stack *lst);
+void	opposite_sens(t_stack **begin_a, t_stack **begin_b, t_short path);
 
-void		ft_stack_delete(t_stack **begin);
+void	ascending(t_stack **begin_a, t_stack **begin_b, t_short path);
 
-int			ft_strlen_arr_str(char **arr_str);
+void	down(t_stack **begin_a, t_stack **begin_b, t_short path);
 
-void		ft_putstr_one_call(char *str);
+int		sorting_algorithm(t_stack **begin_a, t_stack **begin_b);
 
-int			ft_strcmp_ps(char *s1, char *s2, int flag);
+int		power(int nb, int power);
 
-int			validate_number(char *str);
+int		good_median(t_tab tab);
 
-int			check_duplicate(char **argv);
+void	pb_optimisation(t_stack **begin_a, t_stack **begin_b);
 
-int			check_max_min(char *str);
+void	create_b(t_stack **begin_a, t_stack **begin_b);
 
-int			stack_error(int argc, char *argv[]);
+t_stack	*presorting(t_stack **begin_a, t_tab tab);
 
-char		*sorting_algorithm(t_stack *begin_a);
+int		bigger_index(t_stack **begin_a);
 
-t_stack		*create_stack(int len, int *number);
+void	len_3(t_stack **begin_a);
 
-int			main(int argc, char *argv[]);
+void	len_2(t_stack **begin_a);
 
-void		debug(t_stack **begin);
+void	little_len(t_stack **begin_a, int len);
+
+void	tab_swap(int *a, int *b);
+
+int		lower_number(int *arr, int max);
+
+void	sort_tab(t_tab *tab);
+
+int		stack_add_for_a(t_stack **begin_a, int value);
+
+t_stack	*create_stack_a(t_tab tab);
+
+int		validate_number(char *str);
+
+int		check_duplicate(char **argv);
+
+int		check_max_min(char *str);
+
+int		stack_error(int argc, char *argv[]);
+
+void	brain(t_stack *begin_a, t_tab tab);
+
+int		main(int argc, char *argv[]);
 
 #endif

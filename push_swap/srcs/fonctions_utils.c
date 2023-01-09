@@ -6,31 +6,11 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 05:05:03 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/04 17:56:52 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/09 01:42:30 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_strlen_arr_str(char **arr_str)
-{
-	int	i;
-
-	i = 1;
-	if (!arr_str)
-		return (0);
-	while (arr_str[i])
-		i++;
-	return (i - 1);
-}
-
-void	ft_putstr_one_call(char *str)
-{
-	int	len;
-
-	len = ft_strlen(str);
-	write(1, str, len);
-}
 
 int	ft_strcmp_ps(char *s1, char *s2, int flag)
 {
@@ -58,24 +38,39 @@ int	ft_strcmp_ps(char *s1, char *s2, int flag)
 	return (s1[i] - s2[i]);
 }
 
-void	full_rotate(t_stack **begin_a, t_string *str)
+int	check_no_instructions(t_stack *begin_a)
 {
-	t_value	lower;
-	t_value	bigger;
-	int		sense;
+	int	check;
 
-	lower = ft_stack_search_lower(*begin_a);
-	bigger = ft_stack_search_bigger(*begin_a);
-	if (lower.index < ft_stack_len(*begin_a))
-		sense = 1;
-	else
-		sense = 0;
-	while ((*begin_a)->number != lower.value
-		&& (*begin_a)->last->number != bigger.value)
+	check = begin_a->number;
+	begin_a = begin_a->next;
+	while (begin_a)
 	{
-		if (sense == 1)
-			rab(begin_a, str, 'a');
-		else
-			rrab(begin_a, str, 'a');
+		if (check > begin_a->number)
+			return (1);
+		check = begin_a->number;
+		begin_a = begin_a->next;
+	}
+	return (0);
+}
+
+void	order(t_stack **begin_a, t_tab tab)
+{
+	t_stack	*lower;
+	int		len;
+
+	len = stack_len(*begin_a);
+	lower = *begin_a;
+	while (lower->number != tab.array[0])
+		lower = lower->next;
+	if (lower->link > len / 2)
+	{
+		while (lower->link != 1)
+			rra(begin_a);
+	}
+	else
+	{
+		while (lower->link != 1)
+			ra(begin_a);
 	}
 }
