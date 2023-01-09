@@ -26,7 +26,6 @@ int	stack_add_for_a(t_stack **begin_a, int value)
 	lst->number = value;
 	lst->next = NULL;
 	last->next = lst;
-	lst->link = last->link + 1;
 	return (0);
 }
 

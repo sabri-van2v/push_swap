@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 21:55:42 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/08 23:25:18 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/09 02:05:42 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	pa(t_stack **begin_a, t_stack **begin_b);
 
 void	pb(t_stack **begin_a, t_stack **begin_b);
 
-void	call_p(t_stack **begin_a, t_stack **begin_b, char *str);
+int		call_p(t_stack **begin_a, t_stack **begin_b, char *str);
 
 void	reverse_rotate_action(t_stack **begin);
 
@@ -43,7 +43,7 @@ void	rrb(t_stack **begin_b);
 
 void	rrr(t_stack **begin_a, t_stack **begin_b);
 
-void	call_rr(t_stack **begin_a, t_stack **begin_b, char *str);
+int		call_rr(t_stack **begin_a, t_stack **begin_b, char *str);
 
 void	rotate_action(t_stack **begin);
 
@@ -53,13 +53,13 @@ void	rb(t_stack **begin_b);
 
 void	rr(t_stack **begin_a, t_stack **begin_b);
 
-void	call_r(t_stack **begin_a, t_stack **begin_b, char *str);
+int		call_r(t_stack **begin_a, t_stack **begin_b, char *str);
 
 void	sa(t_stack **begin_a);
 
 void	sb(t_stack **begin_b);
 
-void	call_s(t_stack **begin_a, t_stack **begin_b, char *str);
+int		call_s(t_stack **begin_a, t_stack **begin_b, char *str);
 
 t_stack	*stack_new(int value);
 

@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 08:40:37 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/08 20:52:49 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/09 02:05:47 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	stack_decrementation(t_stack **begin);
 
 int		ft_strcmp_ps(char *s1, char *s2, int flag);
 
+int		check_no_instructions(t_stack *begin_a);
+
 void	order(t_stack **begin_a, t_tab tab);
 
 void	stack_delete(t_stack **begin);
@@ -137,11 +139,5 @@ int		stack_error(int argc, char *argv[]);
 void	brain(t_stack *begin_a, t_tab tab);
 
 int		main(int argc, char *argv[]);
-
-void	print_stack(t_stack *begin);
-
-void	print_tab(t_tab tab);
-
-void	print_short(t_short	path);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 05:05:03 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/07 17:31:35 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/09 01:42:30 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@ int	ft_strcmp_ps(char *s1, char *s2, int flag)
 	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
 	return (s1[i] - s2[i]);
+}
+
+int	check_no_instructions(t_stack *begin_a)
+{
+	int	check;
+
+	check = begin_a->number;
+	begin_a = begin_a->next;
+	while (begin_a)
+	{
+		if (check > begin_a->number)
+			return (1);
+		check = begin_a->number;
+		begin_a = begin_a->next;
+	}
+	return (0);
 }
 
 void	order(t_stack **begin_a, t_tab tab)

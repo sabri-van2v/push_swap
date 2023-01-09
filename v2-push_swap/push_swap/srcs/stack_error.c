@@ -6,7 +6,7 @@
 /*   By: svan-de- <svan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 04:39:30 by svan-de-          #+#    #+#             */
-/*   Updated: 2023/01/03 08:57:40 by svan-de-         ###   ########.fr       */
+/*   Updated: 2023/01/09 01:36:22 by svan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	stack_error(int argc, char *argv[])
 	int	i;
 
 	i = 1;
-	if (argc <= 1)
+	if (argc <= 2)
 		return (0);
 	while (argv[i])
 	{

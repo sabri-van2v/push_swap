@@ -28,26 +28,35 @@ void	rotate_action(t_stack **begin)
 
 void	ra(t_stack **begin_a)
 {
+	if (!*begin_a)
+		return ;
 	rotate_action(begin_a);
 }
 
 void	rb(t_stack **begin_b)
 {
+	if (!*begin_b)
+		return ;
 	rotate_action(begin_b);
 }
 
 void	rr(t_stack **begin_a, t_stack **begin_b)
 {
+	if (!*begin_a || !*begin_b)
+		return ;
 	rotate_action(begin_a);
 	rotate_action(begin_b);
 }
 
-void	call_r(t_stack **begin_a, t_stack **begin_b, char *str)
+int	call_r(t_stack **begin_a, t_stack **begin_b, char *str)
 {
 	if (!ft_strncmp(str, "ra\n", 3))
-		ra(begin_a, begin_b);
+		ra(begin_a);
 	else if (!ft_strncmp(str, "rb\n", 3))
-		rb(begin_a, begin_b);
+		rb(begin_b);
 	else if (!ft_strncmp(str, "rr\n", 3))
 		rr(begin_a, begin_b);
+	else
+		return (1);
+	return (0);
 }

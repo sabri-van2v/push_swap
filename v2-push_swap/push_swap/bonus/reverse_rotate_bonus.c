@@ -30,26 +30,35 @@ void	reverse_rotate_action(t_stack **begin)
 
 void	rra(t_stack **begin_a)
 {
+	if (!*begin_a)
+		return ;
 	reverse_rotate_action(begin_a);
 }
 
 void	rrb(t_stack **begin_b)
 {
+	if (!*begin_b)
+		return ;
 	reverse_rotate_action(begin_b);
 }
 
 void	rrr(t_stack **begin_a, t_stack **begin_b)
 {
+	if (!*begin_a || !*begin_b)
+		return ;
 	reverse_rotate_action(begin_a);
 	reverse_rotate_action(begin_b);
 }
 
-void	call_rr(t_stack **begin_a, t_stack **begin_b, char *str)
+int	call_rr(t_stack **begin_a, t_stack **begin_b, char *str)
 {
 	if (!ft_strncmp(str, "rra\n", 4))
-		rra(begin_a, begin_b);
+		rra(begin_a);
 	else if (!ft_strncmp(str, "rrb\n", 4))
-		rrb(begin_a, begin_b);
+		rrb(begin_b);
 	else if (!ft_strncmp(str, "rrr\n", 4))
 		rrr(begin_a, begin_b);
+	else
+		return (1);
+	return (0);
 }

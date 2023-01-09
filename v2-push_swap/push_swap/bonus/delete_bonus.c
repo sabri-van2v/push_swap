@@ -24,6 +24,6 @@ void	delete_element(t_stack **begin)
 
 	tmp = *begin;
 	*begin = (*begin)->next;
+	tmp = NULL;
 	free(tmp);
-	stack_decrementation(begin);
 }
